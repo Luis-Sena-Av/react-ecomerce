@@ -1,11 +1,12 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { useFecth } from '../hooks/useFecth'
+import '../styles/register_style.css'
 
 export const Login = () => {
 
     const {register,handleSubmit,reset}=useForm()
-    const [,,loginUser]=useFecth()
+    const [infoUser,,loginUser]=useFecth()
     const url="https://e-commerce-api-v2.academlo.tech/api/v1/users/login"
 
     const submit=(data)=>{
@@ -16,8 +17,18 @@ export const Login = () => {
         })
     }
 
+    useEffect(()=>{
+        if(infoUser){
+            localStorage.setItem("token",infoUser.token)
+            localStorage.setItem("user",JSON.stringify(infoUser.user))
+        }
+        
+    },[infoUser])
+
+
     return (
-    <div>
+    <div className='register'>
+        <h2 className='login'>Login</h2>
       <form onSubmit={handleSubmit(submit)}>
 
         <div>
@@ -29,7 +40,7 @@ export const Login = () => {
           <label htmlFor="password">Password</label>
           <input type="password" id="password" {...register("password")} />
         </div>
-        <button>Login</button>
+        <button className='boton'>Login</button>
 
       </form>
     </div>

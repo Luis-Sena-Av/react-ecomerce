@@ -24,7 +24,9 @@ export const Register = () => {
 
 
   return (
-    <div>
+    <div className='register'>
+
+        <h2>Register</h2>
 
         <form onSubmit={handleSubmit(submit)} >
 
@@ -56,7 +58,7 @@ export const Register = () => {
                <input type="number" id='phone' {...register('phone')} />
             </div>   
             
-            <button>Submit</button>       
+            <button className='boton'>Submit</button>       
 
         </form>
 

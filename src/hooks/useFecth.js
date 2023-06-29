@@ -8,7 +8,7 @@ export const useFecth = () => {
   // Create
   const createRegister=(url,data)=>{
     axios.post(url,data)
-      .then(res=>console.log(res.data))
+      .then(res=>setinfApi(res.data))
       .catch(err=>console.log(err))
   }
 
