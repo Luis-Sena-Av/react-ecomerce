@@ -1,0 +1,24 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+img{
+  width: 100%;
+  display: block;
+}
+.app{
+  width: 100%;
+}
+#root{
+  width: 100%;
+}
+
+.Products{
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(320px,1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+  width: 100%;
+ }
