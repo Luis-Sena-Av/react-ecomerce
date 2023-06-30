@@ -12,6 +12,7 @@ width: 200px;
 }
 .pro_cart{
     display: flex;
+    width: max-content;
 }
 
 .bx-trash{

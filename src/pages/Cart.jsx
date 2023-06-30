@@ -17,9 +17,12 @@ export const Cart = () => {
 
     const handlepurchases=()=>{
       Cartpurchases()
-      console.log(cart)
+      despachador(getCartThunk())
     }
-    
+    const total=cart.reduce((acc,cv)=>{
+      const subt=cv.product.price*cv.quantity
+      return acc + subt
+    },0)
     return (
       <div className='cart'>
 
@@ -30,6 +33,7 @@ export const Cart = () => {
         </div>
 
         <div className='comprar'>
+          <span>Total: <b>${total}</b></span>
           <button onClick={handlepurchases}>Checkout</button>
         </div>
 

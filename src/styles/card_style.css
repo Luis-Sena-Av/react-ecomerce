@@ -9,6 +9,7 @@
     width: 100%;
     aspect-ratio: 1.2;
     padding: 1.2em;
+    margin: 0 auto;
 }
 
 .img_product img{
