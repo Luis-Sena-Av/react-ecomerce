@@ -1,0 +1,44 @@
+.cart{
+    background-color:rgb(241, 239, 239);
+    width: 100%;
+    height: 100%;
+    padding: 2rem;
+}
+.img_product{
+width: 200px;
+}
+.img_product img{
+    width: 100%;
+}
+.pro_cart{
+    display: flex;
+}
+
+.bx-trash{
+    cursor: pointer;
+}
+
+.totals{
+    display: flex;
+    flex-direction: column;
+}
+.cart{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.comprar{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.comprar button{
+    width: 200px;
+    background-color: red;
+    color: white;
+    margin: 0 auto;
+   
+}

@@ -3,15 +3,17 @@ import { useParams } from 'react-router-dom'
 import { useFecth } from '../hooks/useFecth'
 import '../styles/product.css'
 import { CardProduct } from '../components/CardProduct'
+import { useDispatch, useSelector } from 'react-redux'
+import { addCartThunk, updateCartThunk } from '../store/slices/cart.slice'
 
 export const ProductId = () => {
     const {id}=useParams()
     const url=`https://e-commerce-api-v2.academlo.tech/api/v1/products/${id}`
     const [product,getproduct]=useFecth()
     const [Similarproduct,getSimilarproduct]=useFecth()
-
+    const despachador=useDispatch()
     const [quantity, setquantity] = useState(1)
-
+    const cart=useSelector(state=>state.cart)
     useEffect(()=>{
         getproduct(url)
     },[id])
@@ -23,21 +25,34 @@ export const ProductId = () => {
         }   
     },[product])
 
-   console.log(Similarproduct)
 
    const handleConta=e=>{
-
     if(e.target.classList.contains("bx-plus")){
         setquantity(quantity+1)
     }
-
     if(e.target.classList.contains("bx-minus")){
         if(quantity>=2){
             setquantity(quantity-1)
         }        
     }
-
    }
+
+    const data={
+        quantity: quantity,
+        productId:product?.id
+    }
+
+    const updata={
+        quantity: quantity
+    }
+
+    
+
+    const handleAddcart=()=>{
+      
+        despachador(addCartThunk(data)) 
+   
+    }
 
   return (
     <div>
@@ -60,8 +75,8 @@ export const ProductId = () => {
             </span>
         </div>
        
-        <div className='agrega_product'>
-            Add to cart <i className='bx bx-cart cart'></i>
+        <div className='agrega_product' onClick={handleAddcart}>
+            Add to cart <i onClick={handleAddcart}  className='bx bx-cart carro'></i>
         </div>
 
        </div>

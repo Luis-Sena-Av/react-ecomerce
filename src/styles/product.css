@@ -17,6 +17,8 @@
     width: 100%;
     text-align: center;
     justify-content: center;
+    cursor: pointer;
+
 }
 
 .marca{
@@ -46,14 +48,14 @@
     
 }
 
-.cart{
-    background-color: transparent;
-}
-
 .conta{
     border: 1px solid gray;
     width: 100%;
     height: 100%;
     padding: 0.3rem;
     font-size: 1rem;
+}
+
+.carro{
+    background-color: transparent;
 }

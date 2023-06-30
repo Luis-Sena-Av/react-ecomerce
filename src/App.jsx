@@ -10,6 +10,7 @@ import { ProductId } from './pages/ProductId'
 import { Register } from './pages/Register'
 import { Login } from './pages/Login'
 import { Header } from './components/Header'
+import { Cart } from './pages/Cart'
 
 function App() {
   
@@ -29,6 +30,7 @@ function App() {
         <Route path='/product/:id' element={<ProductId/>}/>
         <Route path='/register' element={<Register/>}/>
         <Route path='/login' element={<Login/>}/>
+        <Route path='/cart' element={<Cart/>}/>
       </Routes>
     </div>
   )
