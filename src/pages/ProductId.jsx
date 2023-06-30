@@ -4,7 +4,7 @@ import { useFecth } from '../hooks/useFecth'
 import '../styles/product.css'
 import { CardProduct } from '../components/CardProduct'
 import { useDispatch, useSelector } from 'react-redux'
-import { addCartThunk, updateCartThunk } from '../store/slices/cart.slice'
+import { addCartThunk, getCartThunk, updateCartThunk } from '../store/slices/cart.slice'
 
 export const ProductId = () => {
     const {id}=useParams()
@@ -48,10 +48,9 @@ export const ProductId = () => {
 
     
 
-    const handleAddcart=()=>{
-      
+    const handleAddcart=()=>{      
         despachador(addCartThunk(data)) 
-   
+        despachador(getCartThunk())
     }
 
   return (
