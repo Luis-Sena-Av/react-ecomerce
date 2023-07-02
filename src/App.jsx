@@ -12,14 +12,7 @@ import { Cart } from './pages/Cart'
 import { Purchases } from './pages/Purchases'
 
 function App() {
-  
-  const despachador=useDispatch()
-
-  useEffect(()=>{
-    despachador(getAllProductsThunk())
-  },[])
-
-  
+   
 
   return (
     <div className='app'>

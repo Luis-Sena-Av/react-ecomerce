@@ -1,16 +1,14 @@
 import React, { useEffect } from 'react'
 import usePurchase from '../hooks/usePurchase'
-import { CardPurches } from '../components/cardPurches'
+import { CardPurches } from '../components/CardPurches'
 
 export const Purchases = () => {
 
-    const {purchase,getPurchases}= usePurchase()
+  const {purchase,getPurchases}= usePurchase()
 
-    useEffect(()=>{
-        getPurchases()
-    },[])
-
-    console.log(purchase)
+  useEffect(()=>{
+    getPurchases()
+  },[])
 
   return (
     <div>

@@ -14,8 +14,7 @@ export const {setProductsG}=producSlice.actions
 
 export default producSlice.reducer
 
-export const getAllProductsThunk=()=>(despachador)=>{
-    const url="https://e-commerce-api-v2.academlo.tech/api/v1/products"
+export const getAllProductsThunk=(url)=>(despachador)=>{
     axios.get(url)
         .then(res=>despachador(setProductsG(res.data)))
         .catch(err=>console.log(err))

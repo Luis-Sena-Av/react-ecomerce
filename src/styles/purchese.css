@@ -1,0 +1,28 @@
+.purchese{
+    display: flex;
+    gap: 2.5rem;
+    justify-content: flex-start;
+    align-items: center;
+    width: max-content;
+    padding: 2rem;
+}
+
+.img_product1{
+    width: 150px;
+}
+
+.img_product1 img{
+    width: 100%;
+    object-fit: contain;
+}
+
+.cantidad{
+border: 1px solid gray;
+width: 50px;
+text-align: center;
+padding: 0.5rem;
+}
+
+.fecha_comp{
+    color: rgb(209, 206, 206);
+}
