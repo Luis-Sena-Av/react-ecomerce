@@ -3,8 +3,6 @@ import '../styles/purchese.css'
 
 export const CardPurches = (compra) => {
 
-  console.log(compra)
-
   return (
     <div className='purchese'>
       <div className='img_product1'>

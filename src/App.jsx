@@ -10,6 +10,7 @@ import { Login } from './pages/Login'
 import { Header } from './components/Header'
 import { Cart } from './pages/Cart'
 import { Purchases } from './pages/Purchases'
+import { ProtectecRoutes } from './components/ProtectecRoutes'
 
 function App() {
    
@@ -22,8 +23,10 @@ function App() {
         <Route path='/product/:id' element={<ProductId/>}/>
         <Route path='/register' element={<Register/>}/>
         <Route path='/login' element={<Login/>}/>
-        <Route path='/cart' element={<Cart/>}/>
-        <Route path='/purchases' element={<Purchases/>}/>
+        <Route element={<ProtectecRoutes/>}>
+          <Route path='/cart' element={<Cart/>}/>
+          <Route path='/purchases' element={<Purchases/>}/>
+        </Route>        
       </Routes>
     </div>
   )
