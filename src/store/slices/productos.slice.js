@@ -7,7 +7,6 @@ initialState:null,
 reducers:{
     setProductsG:(state,action)=>action.payload
 }
-
 })
 
 export const {setProductsG}=producSlice.actions

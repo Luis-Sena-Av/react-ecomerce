@@ -7,7 +7,7 @@
 }
 
 .register h2,.login{
-font-size: 2.5rem;
+font-size: 1.5rem;
 color: red;
 }
 
@@ -16,23 +16,23 @@ form{
     background-color:rgb(212, 210, 210);
     display:flex ;
     flex-direction: column;
-    gap: 1rem;
+    gap: 0.5rem;
     justify-content: center;
     align-items: flex-start;
-    padding: 1.5rem;
+    padding: 1.1rem;
     width: max-content;
     border-radius: 10px;
 }
 form div{
 display: flex;
-gap: 1.5rem;
+gap: 1rem;
 font-weight: bold;
 flex-direction: column;
 gap: 0.5rem;
 
 }
 label{
-    font-size: 1.5rem;
+    font-size: 1rem;
 }
 input{
     font-size: 1.2rem;
@@ -55,4 +55,20 @@ transition: none;
     outline: none;
     border: none;
     transition: none;
+}
+
+.icon_user{
+    font-size: 5rem;
+}
+
+.loguiado{
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+li{
+    list-style: none;
+    font-weight: bold;
+    color: #2FA8F8;
 }

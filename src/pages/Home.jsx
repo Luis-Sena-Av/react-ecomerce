@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useFecth } from '../hooks/useFecth'
 import { CardProduct } from '../components/CardProduct'
 import { useDispatch, useSelector } from 'react-redux'
@@ -56,8 +56,7 @@ export const Home = () => {
     return condMin && conMax
   }
 
-  return (
-    
+  return (    
     <div className='home'>
 
       <div>
@@ -114,6 +113,5 @@ export const Home = () => {
 
 
     </div>
-    
   )
 }

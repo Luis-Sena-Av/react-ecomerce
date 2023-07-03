@@ -5,7 +5,6 @@ import { CardPurches } from '../components/CardPurches'
 export const Purchases = () => {
 
   const {purchase,getPurchases}= usePurchase()
-
   useEffect(()=>{
     getPurchases()
   },[])

@@ -13,7 +13,7 @@ const usePurchase = () => {
 
     const getPurchases=()=>{
         axios.get(url,getConfigAuth())
-            .then(res=>{console.log(res.data)
+            .then(res=>{
                 setpurchase(res.data)
             })
             .catch(err=>console.log(err))
