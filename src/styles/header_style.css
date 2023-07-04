@@ -10,6 +10,7 @@ nav ul{
     display: flex;
     gap: 1.5rem;
     font-size: 1.2rem;
+    font-size: 1.3rem;
 }
 
 nav ul li{
@@ -20,8 +21,12 @@ nav ul li{
     color: rgb(223, 103, 5);
 }
 
+.bx-cart-alt,.bx-receipt{
+    font-size: 1.5rem;
+}
 
-@media (max-width:610px){
+
+@media (max-width:650px){
     .header{
         flex-direction: column;
         gap: 1rem;
