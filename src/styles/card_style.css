@@ -40,3 +40,12 @@
     text-align: center;
     cursor: pointer;
 }
+
+.carro_card{
+    width: 100%;
+    background-color: green ;
+    display: flex;
+    justify-content: center;
+    border-radius: 0.5rem;
+}
+

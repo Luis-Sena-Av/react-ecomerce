@@ -42,8 +42,8 @@ export const CardProduct = ({product}) => {
           <p><span className='brand'>{product.brand}</span>  <span>{product.title}</span></p>
           <p><span className='price'>Price :</span>  <b>${product.price}</b></p>
         </div>
-        <div onClick={handlecart}>
-          <i onClick={handlecart} className='bx bx-cart'></i>
+        <div onClick={handlecart} className='carro_card'>
+          <i  onClick={handlecart} className='bx bx-cart '></i>
         </div>        
         
       </div>

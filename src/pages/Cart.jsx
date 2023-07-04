@@ -24,16 +24,19 @@ export const Cart = () => {
       return acc + subt
     },0)
     return (
+
+      
       <div className='cart'>
 
-        <div>
+        <div className='productos_cart'>
           {cart?.map(prod=>
             <Cart_products key={prod.id} produc={prod}/>
           )}
         </div>
-
+          
+        
         <div className='comprar'>
-          <span>Total: <b>${total}</b></span>
+          <span className='total-cart'> <span>Total:</span> <b>${total}</b></span>
           <button onClick={handlepurchases}>Checkout</button>
         </div>
 
