@@ -4,13 +4,14 @@ import { CardProduct } from '../components/CardProduct'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllProductsThunk } from '../store/slices/productos.slice'
 import { useForm } from 'react-hook-form'
-
+import "../styles/home.css"
 export const Home = () => {
 
   const Products=useSelector(state=>state.ProductsG)
   const [nameProduct, setNameproduct] = useState("")
   const despachador=useDispatch()
   const [categories,getcategories]=useFecth()
+  const [showcategory, setshowcategory] = useState(false)
 
   const [filterPrice, setfilterPrice] = useState({
     min:0,
@@ -56,11 +57,16 @@ export const Home = () => {
     return condMin && conMax
   }
 
+ const show_lis=()=>{
+  setshowcategory(!showcategory)
+ }
+ 
+
   return (    
     <div className='home'>
 
       <div>
-        <h2>Price</h2>
+        <h2>Price <i className='bx bx-chevron-down'></i></h2>
         <form onSubmit={handleSubmit(submit)}>
           <div>
             <label htmlFor="from">From</label>
@@ -74,13 +80,13 @@ export const Home = () => {
           <button>Filter Price</button>     
         </form>
       </div>
-              
+      
         
      
 
-      <div>
-        <h2>Category</h2>
-        <ul style={{cursor:"pointer"}}>
+      <div className='fiter_category'>
+        <h2 className='category' onClick={show_lis} >Category <i className={`bx bx-chevron-down ${showcategory&&'rota'} `}></i></h2>
+        <ul style={{cursor:"pointer"}} className={`list_category ${showcategory&&'list_category_show'}`} >
           <li onClick={()=>handleClick()}>All categories</li>
           {categories?.map(categoty=> 
         

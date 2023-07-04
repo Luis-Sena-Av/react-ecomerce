@@ -28,10 +28,7 @@ export const Login = () => {
         localStorage.setItem("token",infoUser.token)
         localStorage.setItem("user",JSON.stringify(infoUser.user))
       }
-      navigate("/login") 
     },[infoUser])
-
-    console.log(user)
 
     const salir=()=>{
       localStorage.clear()
@@ -49,7 +46,7 @@ export const Login = () => {
       {localStorage.getItem('token')?
       <div className='loguiado'>
         <div className='icon_user'>
-          <i class='bx bxs-user'></i>
+          <i className='bx bxs-user'></i>
         </div>
         <h3>{user.firstName.charAt(0).toUpperCase()+user.firstName.slice(1)+" "+user.lastName.charAt(0).toUpperCase()+user.lastName.slice(1)}</h3>
         <li style={{cursor:"pointer"}} onClick={salir}>Log Out</li>

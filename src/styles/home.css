@@ -1,0 +1,26 @@
+.category{
+    cursor: pointer;
+    transition: all 1s;
+}
+
+.list_category{
+ opacity: 0;
+ transition: height 1s;
+ height: 0;
+}
+
+.list_category_show{
+    transition: height 1s;
+    height: max-content;
+    opacity: 1;
+}
+
+.rota{
+    transform: rotate(-180deg);
+    transition: all 1s;
+}
+
+.bx-chevron-down{
+    transition: all 1s;
+}
+
