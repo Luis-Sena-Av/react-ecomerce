@@ -69,8 +69,7 @@ export const ProductId = () => {
                 <span className='conta'><i className='bx bx-minus'></i></span>
                 <span className='conta'>{quantity}</span>
                 <span className='conta'><i className='bx bx-plus'></i></span>
-            </div>
-                
+            </div>                
             </span>
         </div>
        
@@ -79,7 +78,7 @@ export const ProductId = () => {
         </div>
 
        </div>
-        <h1>Productos Similares</h1>
+        <h1 className='similar'>Productos Similares</h1>
        <div className='Products'>
             {Similarproduct?.filter(prod=>prod.id!==product.id).map(product=>
             <CardProduct product={product} key={product.id}/> 
