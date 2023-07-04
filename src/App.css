@@ -19,10 +19,9 @@ position: absolute;
   width: 100%;
 }
 
-.Products{
-  display: grid;
-  grid-template-columns: repeat(auto-fill,minmax(320px,1fr));
-  gap: 1.5rem;
-  padding: 2rem;
-  width: 100%;
- }
+@media (width:610px){
+  .header{
+      flex-direction: column;
+     
+  }
+}

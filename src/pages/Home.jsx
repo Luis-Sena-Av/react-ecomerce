@@ -12,6 +12,7 @@ export const Home = () => {
   const despachador=useDispatch()
   const [categories,getcategories]=useFecth()
   const [showcategory, setshowcategory] = useState(false)
+  const [showPrice, setshowPrice] = useState(false)
 
   const [filterPrice, setfilterPrice] = useState({
     min:0,
@@ -60,31 +61,35 @@ export const Home = () => {
  const show_lis=()=>{
   setshowcategory(!showcategory)
  }
+
+ const show_list=()=>{
+  setshowPrice(!showPrice)
+ }
  
 
-  return (    
+  return (  
+
     <div className='home'>
 
-      <div>
-        <h2>Price <i className='bx bx-chevron-down'></i></h2>
-        <form onSubmit={handleSubmit(submit)}>
-          <div>
-            <label htmlFor="from">From</label>
-            <input  type="number" {...register("min")}/>
-          </div>
-          
-          <div>
-            <label htmlFor="from">To</label>
-            <input type="number" {...register("max")}/>
-          </div> 
-          <button>Filter Price</button>     
-        </form>
-      </div>
-      
-        
-     
+      <div className='filtros'>
 
-      <div className='fiter_category'>
+        <div className='filter_price'>
+          <h2 className='price' onClick={show_list}>Price <i className={`bx bx-chevron-down ${showPrice&&'rota'} `}></i></h2>
+          <form onSubmit={handleSubmit(submit)} className={`list_price ${showPrice&&'list_price_show'}`} >
+            <div>
+              <label htmlFor="from">From</label>
+              <input  type="number" {...register("min")}/>
+            </div>
+            
+            <div>
+              <label htmlFor="from">To</label>
+              <input type="number" {...register("max")}/>
+            </div> 
+            <button className='buton_filter'>Filter Price</button>     
+          </form>
+        </div> 
+
+        <div className='fiter_category'>
         <h2 className='category' onClick={show_lis} >Category <i className={`bx bx-chevron-down ${showcategory&&'rota'} `}></i></h2>
         <ul style={{cursor:"pointer"}} className={`list_category ${showcategory&&'list_category_show'}`} >
           <li onClick={()=>handleClick()}>All categories</li>
@@ -95,27 +100,32 @@ export const Home = () => {
           </li> 
         )}
         </ul>
-      </div>
+      </div>   
 
-
-      <div>
-
-        <label htmlFor="FiltronName"></label>
-
-        <input
-          type="text" 
-          value={nameProduct}
-          onChange={handleChange}
-          placeholder='What are you looking for?'
-        />
       </div>
       
-    
-      <div className='Products'>
-        {Products?.filter(prod=>prod.title.toLowerCase().includes(nameProduct)).filter(filter_Price).map(product=>
-          <CardProduct product={product} key={product.id}/> 
-        )}
-      </div>
+
+      
+      <div className='principal_home'>
+        <div className='conten_filtername'>
+          <label htmlFor="FiltronName"></label>
+          <input
+            className='filtro_name'
+            type="text" 
+            value={nameProduct}
+            onChange={handleChange}
+            placeholder='What are you looking for?'
+          />
+        </div>
+        
+      
+        <div className='Products'>
+          {Products?.filter(prod=>prod.title.toLowerCase().includes(nameProduct)).filter(filter_Price).map(product=>
+            <CardProduct product={product} key={product.id}/> 
+          )}
+        </div>
+
+      </div> 
 
 
     </div>
