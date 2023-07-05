@@ -6,6 +6,7 @@
     width: max-content;
     padding: 1.2rem;
     max-width: 98%;
+    flex-wrap: wrap;
 }
 
 .img_product1{
