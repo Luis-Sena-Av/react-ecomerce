@@ -1,7 +1,7 @@
 .img_product{
     width: 100%;
-    aspect-ratio: 1.2;
-    padding: 1.2em;
+    height: 40%;
+    padding: 1.5em;
     margin: 0 auto;
 }
 
@@ -11,7 +11,7 @@
    object-fit: contain;
 }
 .product_info{
-    padding: 1.5rem;
+    padding: 1rem;
 }
 .brand,.price{
     color: gray;
@@ -31,7 +31,7 @@
 }
 
 .bx-cart{
-    font-size: 2.5rem;
+    font-size: 2rem;
     justify-self:flex-end;
     background-color: green;
     border-radius:50%;
@@ -49,3 +49,11 @@
     border-radius: 0.5rem;
 }
 
+.product{
+    border: 1px solid blue;
+    border-radius: 1rem;
+    width: 100%;
+    max-width: 300px;
+    aspect-ratio: 0.6;
+    margin: 0 auto;
+}
