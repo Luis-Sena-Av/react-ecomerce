@@ -1,10 +1,11 @@
 .purchese{
     display: flex;
-    gap: 2.5rem;
+    gap: 1.2rem;
     justify-content: flex-start;
     align-items: center;
     width: max-content;
-    padding: 2rem;
+    padding: 1.2rem;
+    max-width: 98%;
 }
 
 .img_product1{
@@ -16,6 +17,8 @@
     width: 100%;
     height: 100%;
     object-fit: contain;
+    padding: 0;
+    margin: 0 auto;
 }
 
 .cantidad{
@@ -27,4 +30,16 @@ padding: 0.5rem;
 
 .fecha_comp{
     color: rgb(209, 206, 206);
+}
+
+@media(max-width:400px){
+    .name_putchese{
+        font-size: 0.7rem;
+    }
+}
+
+@media(max-width:342px){
+    .fecha_comp{
+        display: none;
+    }
 }
