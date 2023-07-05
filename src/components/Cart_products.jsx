@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { deleteCartThunk } from '../store/slices/cart.slice'
-import "../styles/cart_style.css"
-
+import '../styles/Cart_style.css'
 export const Cart_products = ({produc}) => {
 
     const [quantity, setquantity] = useState(1)
