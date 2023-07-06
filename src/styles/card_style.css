@@ -1,11 +1,11 @@
 .product{
     border: 1px solid blue;
     border-radius: 1rem;
-    width: 100%;
     margin: 0 auto;   
     position: relative;
     display: flex;
     flex-direction: column;
+    width: 300px;
 }
 
 .img_product{
