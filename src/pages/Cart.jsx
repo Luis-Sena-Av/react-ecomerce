@@ -23,8 +23,8 @@ export const Cart = () => {
       const subt=cv.product.price*cv.quantity
       return acc + subt
     },0)
+    
     return (
-
       
       <div className='cart'>
 

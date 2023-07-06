@@ -1,8 +1,7 @@
-import React, { useEffect } from 'react'
 import '../styles/card_style.css'
 import { useNavigate } from 'react-router-dom'
-import { addCartThunk, getCartThunk, setCartG } from '../store/slices/cart.slice'
-import { useDispatch, useSelector } from 'react-redux'
+import { addCartThunk, getCartThunk } from '../store/slices/cart.slice'
+import { useDispatch } from 'react-redux'
 
 export const CardProduct = ({product}) => {
 
@@ -16,17 +15,12 @@ export const CardProduct = ({product}) => {
     quantity: 1,
     productId:product.id
   }
-
-  const cart=useSelector(state=>state.cart)
- 
  
   const handlecart=e=>{
     e.stopPropagation()
     despachador(addCartThunk(data))
     despachador(getCartThunk())
   }
-
-
 
   return (
     <div className='product' onClick={handleproduct}>
@@ -38,14 +32,16 @@ export const CardProduct = ({product}) => {
       <hr />
 
       <div className='product_info'>
+        
         <div>
           <p><span className='brand'>{product.brand}</span>  <span>{product.title}</span></p>
           <p><span className='price'>Price :</span>  <b>${product.price}</b></p>
         </div>
+
         <div onClick={handlecart} className='carro_card'>
           <i  onClick={handlecart} className='bx bx-cart '></i>
-        </div>        
-        
+        </div>  
+          
       </div>
 
     </div>
