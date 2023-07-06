@@ -4,13 +4,13 @@
     gap: 1rem;
     align-items: center;
     justify-content: center;
+    text-align: left;
 }
 
 .register h2,.login{
-font-size: 1.5rem;
-color: red;
+    font-size: 1.5rem;
+    color: red;
 }
-
 
 form{
     background-color:rgb(212, 210, 210);
@@ -23,34 +23,45 @@ form{
     width: max-content;
     border-radius: 10px;
 }
-form div{
-display: flex;
-gap: 1rem;
-font-weight: bold;
-flex-direction: column;
-gap: 0.5rem;
 
+form div{
+    display: flex;
+    gap: 1rem;
+    font-weight: bold;
+    flex-direction: column;
+    gap: 0.5rem;
 }
+
 label{
     font-size: 1rem;
 }
+
 input{
     font-size: 1.2rem;
     padding: 0.3rem;
     border-radius: 0.4rem;
 }
 
-.boton{
+.boton_{
     margin: 0 auto;
     color: white;
     background-color:green;
-    border: none;
+    padding: 0.5rem 0.8rem;
+    border-radius: 0.4rem;
+    cursor: pointer;
 }
+
+.boton_:active{
+    scale:0.8 ;
+}
+
+
 .boton:hover{
-outline: none;
-border: none;
-transition: none;
+    outline: none;
+    border: none;
+    transition: none;
 }
+
 .boton:focus{
     outline: none;
     border: none;
@@ -59,6 +70,15 @@ transition: none;
 
 .icon_user{
     font-size: 5rem;
+}
+
+.login_page{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    height: calc(100% - 150px) ;
 }
 
 .loguiado{

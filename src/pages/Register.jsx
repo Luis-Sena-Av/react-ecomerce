@@ -24,7 +24,10 @@ export const Register = () => {
 
 
   return (
-    <div className='register'>
+
+    <div className='login_page'>
+
+        <div className='register'>
 
         <h2>Register</h2>
 
@@ -54,15 +57,19 @@ export const Register = () => {
 
             
             <div>
-               <label htmlFor="Phone">Phone</label>
-               <input type="number" id='phone' {...register('phone')} />
+            <label htmlFor="Phone">Phone</label>
+            <input type="number" id='phone' {...register('phone')} />
             </div>   
             
-            <button className='boton'>Submit</button>       
+            <button className='boton_'>Submit</button>       
 
         </form>
 
+        </div>
+
     </div>
+
+   
   )
 }
 

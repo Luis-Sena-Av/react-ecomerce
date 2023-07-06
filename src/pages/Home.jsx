@@ -64,10 +64,9 @@ export const Home = () => {
 
  const show_list=()=>{
   setshowPrice(!showPrice)
- }
- 
+ } 
 
-  return (  
+ return (  
 
     <div className='home'>
 
@@ -103,9 +102,7 @@ export const Home = () => {
       </div>   
 
       </div>
-      
-
-      
+            
       <div className='principal_home'>
         <div className='conten_filtername'>
           <label htmlFor="FiltronName"></label>
@@ -117,7 +114,6 @@ export const Home = () => {
             placeholder='What are you looking for?'
           />
         </div>
-        
       
         <div className='Products'>
           {Products?.filter(prod=>prod.title.toLowerCase().includes(nameProduct)).filter(filter_Price).map(product=>
@@ -129,5 +125,6 @@ export const Home = () => {
 
 
     </div>
-  )
+ )
+
 }
