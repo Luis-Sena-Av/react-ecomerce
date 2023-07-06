@@ -69,22 +69,23 @@
     width: 100%;
 }
 
-
 .filter_price{
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    
-}
-.fiter_category{
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+height: min-content;    
 }
 
 .buton_filter{
     margin: 0 auto;
+    padding: 0.4rem 0.7rem;
+    background-color:green;
+    color: white;
+    border-radius: 0.8rem;
+    cursor: pointer;
 }
+
+.buton_filter:active{
+    scale: 0.9;
+}
+
 .filtro_name{
     min-width: 250px;
 }
@@ -97,14 +98,26 @@
     padding-top: 1.5rem;
 }
 
+.filtros{
+    display: flex;
+    gap: 1.5rem;
+    justify-content: space-between;
+}
 
 
-@media screen and (width:620px){
+
+@media screen and (max-width:620px){
     .home{
         display: flex;
         padding: 2rem;
         gap: 1.5rem;
         width: 100%;
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width:566px){    
+    .filtros{
         flex-direction: column;
     }
 }

@@ -99,7 +99,7 @@ export const Home = () => {
           </li> 
         )}
         </ul>
-      </div>   
+        </div>   
 
       </div>
             
