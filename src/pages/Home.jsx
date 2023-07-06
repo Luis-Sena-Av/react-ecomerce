@@ -74,7 +74,7 @@ export const Home = () => {
       <div className='filtros'>
 
         <div className='filter_price'>
-          <h2 className='price' onClick={show_list}>Price <i className={`bx bx-chevron-down ${showPrice&&'rota'} `}></i></h2>
+          <h2 className='price_' onClick={show_list}>Price <i className={`bx bx-chevron-down ${showPrice&&'rota'} `}></i></h2>
           <form onSubmit={handleSubmit(submit)} className={`list_price ${showPrice&&'list_price_show'}`} >
             <div>
               <label htmlFor="from">From</label>
