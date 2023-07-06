@@ -99,7 +99,7 @@
 
 
 
-@media(width:620px){
+@media screen and (width:620px){
     .home{
         display: flex;
         padding: 2rem;
