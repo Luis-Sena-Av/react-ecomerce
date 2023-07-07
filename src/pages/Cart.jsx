@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getCartThunk } from '../store/slices/cart.slice'
 import { Cart_products } from '../components/Cart_products'
@@ -7,39 +7,46 @@ import usePurchase from '../hooks/usePurchase'
 
 export const Cart = () => {
 
-    const cart=useSelector(state=>state.cart)
-    const despachador=useDispatch()
-    const {Cartpurchases}=usePurchase()
+  const cart=useSelector(state=>state.cart)
+  const despachador=useDispatch()
+  const {Cartpurchases}=usePurchase()
+  const [total, settotal] = useState()
 
-    useEffect(()=>{
-      despachador(getCartThunk())
-    },[])
+  useEffect(()=>{
+    despachador(getCartThunk())
+  },[])
+  
+  const handlepurchases=()=>{
+    Cartpurchases()
+    despachador(getCartThunk())
+  }
 
-    const handlepurchases=()=>{
-      Cartpurchases()
-      despachador(getCartThunk())
-    }
-    const total=cart.reduce((acc,cv)=>{
-      const subt=cv.product.price*cv.quantity
+useEffect(()=>{
+  if(cart.length>0){
+    let total_products=cart?.reduce((acc,cv)=>{
+      let subt=cv.product.price*cv.quantity
       return acc + subt
     },0)
-    
-    return (
+    settotal(total_products)
+  }
+},[cart])
+     
+  return (
       
-      <div className='cart'>
+    <div className='cart'>
 
-        <div className='productos_cart'>
-          {cart?.map(prod=>
+       <div className='productos_cart'>
+          {cart?.map(prod=>(            
             <Cart_products key={prod.id} produc={prod}/>
+          )
           )}
-        </div>
-          
-        
-        <div className='comprar'>
-          <span className='total-cart'> <span>Total:</span> <b>${total}</b></span>
-          <button onClick={handlepurchases}>Checkout</button>
-        </div>
-
+      </div>          
+         
+      <div className='comprar'>
+        <span className='total-cart'> <span>Total:</span> <b>${total}</b></span>
+        <button onClick={handlepurchases}>Checkout</button>
       </div>
-    )
+
+    </div>
+  )
 }

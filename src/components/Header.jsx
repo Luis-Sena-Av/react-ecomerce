@@ -12,8 +12,8 @@ export const Header = () => {
 
         <nav>
             <ul>
-                <li><Link to='/register'>Register <i className='bx bx-user-plus'></i></Link></li>
-                <li><Link to='/login'>Login <i className='bx bx-log-in'></i></Link></li>
+                <li><Link to='/register'><i className='bx bx-user-plus'></i></Link></li>
+                <li><Link to='/login'><i className='bx bx-log-in'></i></Link></li>
                 <li><Link to='/cart'><i className='bx bx-cart-alt' ></i></Link></li>
                 <li><Link to='/purchases'><i className='bx bx-receipt'></i></Link></li>
             </ul>

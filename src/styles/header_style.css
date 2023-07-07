@@ -9,8 +9,8 @@
 }
 nav ul{
     display: flex;
-    gap: 1.5rem;
-    font-size: 1.5rem;
+    gap: 2rem;
+    font-size: 2rem;
     margin: 0 auto;
 }
 
@@ -23,9 +23,6 @@ nav ul li{
     font-size: 4rem;
 }
 
-.bx-cart-alt,.bx-receipt{
-    font-size: 1.5rem;
-}
 
 
 @media (max-width:650px){

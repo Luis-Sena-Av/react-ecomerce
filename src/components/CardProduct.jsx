@@ -1,16 +1,17 @@
 import '../styles/card_style.css'
 import { useNavigate } from 'react-router-dom'
-import { addCartThunk, getCartThunk } from '../store/slices/cart.slice'
+import { addCartThunk} from '../store/slices/cart.slice'
 import { useDispatch } from 'react-redux'
 
 export const CardProduct = ({product}) => {
 
   const navigate= useNavigate()
-  const despachador=useDispatch()
+  const despachador=useDispatch()  
+  
   const handleproduct=()=>{
     navigate(`/product/${product.id}`)
-  }
-
+  }  
+  
   const data={
     quantity: 1,
     productId:product.id
@@ -19,10 +20,10 @@ export const CardProduct = ({product}) => {
   const handlecart=e=>{
     e.stopPropagation()
     despachador(addCartThunk(data))
-    despachador(getCartThunk())
-  }
+  } 
 
   return (
+    
     <div className='product' onClick={handleproduct}>
 
       <div className='img_product'>

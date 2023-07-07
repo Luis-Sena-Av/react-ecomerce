@@ -11,9 +11,7 @@ const cartSlice= createSlice({
         deleteProductCartG:(state,action)=>{
          return   state.filter(product=>product.id!==action.payload.id)
         }
-        // updateProductCartG:(state,action)=>{
-        //     return []
-        // }
+        
     }
 })
 
@@ -30,14 +28,12 @@ export const getCartThunk=()=>(despachador)=>{
 
 
 //Agregar al cart
-export const addCartThunk=(data)=>(despachador)=>{
-    
-    const url="https://e-commerce-api-v2.academlo.tech/api/v1/cart"
-    
+export const addCartThunk=(data)=>(despachador)=>{ 
+
+    const url="https://e-commerce-api-v2.academlo.tech/api/v1/cart"    
     axios.post(url,data,getConfigAuth())
         .then(res=>{
-            console.log(res.data)
-            despachador(addProductCartG(res.data)) 
+            console.log(res.data) 
         })
         .catch(err=>console.log(err))
 }

@@ -8,9 +8,12 @@ import { Header } from './components/Header'
 import { Cart } from './pages/Cart'
 import { Purchases } from './pages/Purchases'
 import { ProtectecRoutes } from './components/ProtectecRoutes'
+import { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import { getCartThunk } from './store/slices/cart.slice'
 
 function App() {
-   
+
 
   return (
     <div className='app'>

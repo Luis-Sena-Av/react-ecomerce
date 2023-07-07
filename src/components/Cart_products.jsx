@@ -5,9 +5,8 @@ import '../styles/Cart_style.css'
 export const Cart_products = ({produc}) => {
 
     const [quantity, setquantity] = useState(1)
-
     const despachador=useDispatch()
-
+    
     const handleConta=e=>{
         if(e.target.classList.contains("bx-plus")){
             setquantity(quantity+1)
@@ -22,9 +21,9 @@ export const Cart_products = ({produc}) => {
     const handleDelete=()=>{
         despachador(deleteCartThunk(produc))
     }
+    console.log(produc)
 
-
-  return (
+    return (
     
     <div className='pro_cart'>
        
@@ -45,7 +44,7 @@ export const Cart_products = ({produc}) => {
                 <span className='conta'><i className='bx bx-plus'></i></span>
             </div>  
             
-        </div> 
+        </div>  
         
     </div>
   )
