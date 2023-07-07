@@ -10,7 +10,7 @@ export const Purchases = () => {
   },[])
 
   return (
-    <div>
+    <div className='container_purchese'>
       {purchase?.map(compra=> <CardPurches compra={compra} key={compra.id}/> )}
     </div>
   )

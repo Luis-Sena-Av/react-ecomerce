@@ -2,11 +2,8 @@
     background-color:rgb(241, 239, 239);
     padding: 1.3rem;
     width: 350px;
-    height: calc(100% - 150px);
-    position: absolute;
-    right: 0;
+    height: calc(100vh - 150px);
     background-color: blue;
-    
 }
 
 .productos_cart{
@@ -70,6 +67,8 @@
     color: white;
     margin: 0 auto;
     cursor: pointer;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
 }
 
 .nombre_product{

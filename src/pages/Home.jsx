@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getAllProductsThunk } from '../store/slices/productos.slice'
 import { useForm } from 'react-hook-form'
 import "../styles/home.css"
+import { Cart } from './Cart'
+import { getCartThunk } from '../store/slices/cart.slice'
 export const Home = () => {
 
   const Products=useSelector(state=>state.ProductsG)
@@ -13,12 +15,11 @@ export const Home = () => {
   const [categories,getcategories]=useFecth()
   const [showcategory, setshowcategory] = useState(false)
   const [showPrice, setshowPrice] = useState(false)
-
+  const mostrarCartG=useSelector(state=>state.mostrarCartG)
   const [filterPrice, setfilterPrice] = useState({
     min:0,
     max:Infinity
   })
-
   const {register,handleSubmit}=useForm()
 
   useEffect(()=>{
@@ -28,6 +29,7 @@ export const Home = () => {
   useEffect(()=>{
     const url="https://e-commerce-api-v2.academlo.tech/api/v1/products"
     despachador(getAllProductsThunk(url))
+    despachador(getCartThunk())
   },[])
     
   const handleChange=(e)=>{
@@ -68,13 +70,18 @@ export const Home = () => {
 
  return (  
 
-    <div className='home'>
 
-      <div className='filtros'>
+      <div className='contain_home'>
 
-        <div className='filter_price'>
-          <h2 className='price_' onClick={show_list}>Price <i className={`bx bx-chevron-down ${showPrice&&'rota'} `}></i></h2>
-          <form onSubmit={handleSubmit(submit)} className={`list_price ${showPrice&&'list_price_show'}`} >
+      <div className={`container_cart ${mostrarCartG&&'mostrar_Cart'}`}>
+        <Cart/>
+      </div>
+
+      <div className='home'>
+        <div className='filtros'>
+          <div className='filter_price'>
+            <h2 className='price_' onClick={show_list}>Price <i className={`bx bx-chevron-down ${showPrice&&'rota'} `}></i></h2>
+             <form onSubmit={handleSubmit(submit)} className={`list_price ${showPrice&&'list_price_show'}`} >
             <div>
               <label htmlFor="from">From</label>
               <input  type="number" {...register("min")}/>
@@ -125,6 +132,8 @@ export const Home = () => {
 
 
     </div>
+      </div>
+     
  )
 
 }

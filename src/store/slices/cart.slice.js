@@ -33,6 +33,7 @@ export const addCartThunk=(data)=>(despachador)=>{
     axios.post(url,data,getConfigAuth())
         .then(res=>{
             console.log(res.data) 
+            despachador(getCartThunk())
         })
         .catch(err=>console.log(err))
 }
@@ -44,10 +45,8 @@ export const updateCartThunk=(product,quantity)=>(despachador)=>{
     const data={
         quantity:quantity
     }
-    console.log(data)
     axios.put(url,data,getConfigAuth())
         .then(res=>{
-            console.log(res.data)
             despachador(getCartThunk())
         })
         .catch(err=>console.log(err))

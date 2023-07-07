@@ -6,6 +6,10 @@
     padding: 1rem 3rem 1rem 1rem;
     background-color: rgb(207, 203, 203);
     height: 150px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
 }
 nav ul{
     display: flex;
@@ -21,6 +25,10 @@ nav ul li{
 .ecomer{
     color: rgb(223, 103, 5);
     font-size: 4rem;
+}
+
+.bx-cart-alt{
+    cursor: pointer;
 }
 
 

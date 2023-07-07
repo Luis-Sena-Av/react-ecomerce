@@ -1,6 +1,6 @@
 import '../styles/card_style.css'
 import { useNavigate } from 'react-router-dom'
-import { addCartThunk} from '../store/slices/cart.slice'
+import { addCartThunk, getCartThunk} from '../store/slices/cart.slice'
 import { useDispatch } from 'react-redux'
 
 export const CardProduct = ({product}) => {
