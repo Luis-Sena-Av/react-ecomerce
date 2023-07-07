@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { deleteCartThunk } from '../store/slices/cart.slice'
+import { deleteCartThunk, getCartThunk, updateCartThunk } from '../store/slices/cart.slice'
 import '../styles/Cart_style.css'
 export const Cart_products = ({produc}) => {
 
@@ -13,16 +13,19 @@ export const Cart_products = ({produc}) => {
         }
         if(e.target.classList.contains("bx-minus")){
             if(quantity>=2){
-                setquantity(quantity-1)
+                setquantity(quantity-1)               
             }        
         }
     }
 
+    useEffect(()=>{
+        despachador(updateCartThunk(produc,quantity))
+    },[quantity])
+
     const handleDelete=()=>{
         despachador(deleteCartThunk(produc))
     }
-    console.log(produc)
-
+    
     return (
     
     <div className='pro_cart'>
