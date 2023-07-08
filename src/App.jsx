@@ -24,7 +24,6 @@ function App() {
         <Route path='/register' element={<Register/>}/>
         <Route path='/login' element={<Login/>}/>
         <Route element={<ProtectecRoutes/>}>
-          <Route path='/cart' element={<Cart/>}/>
           <Route path='/purchases' element={<Purchases/>}/>
         </Route>        
       </Routes>
