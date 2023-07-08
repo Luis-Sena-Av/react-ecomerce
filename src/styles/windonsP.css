@@ -1,0 +1,36 @@
+.container_windonsProduct{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 200;
+    background-color: rgba(1,0,0, 0.5);
+}
+
+.Windons_product{
+    width: 250px;
+    height: 250px;
+    border: 2px solid darkblue;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    background-color: rgba(1,0,0, 1);
+    padding: 1.3rem;
+    text-align: center;
+}
+
+.Windons_product h1{
+    color: white;
+    font-size: 1.5rem;
+}
+
+.Windons_product span{
+    font-size: 1.5rem;
+}

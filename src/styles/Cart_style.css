@@ -122,3 +122,10 @@
 .bx-trash{
     font-size: 1.3rem;
 }
+
+@media screen and (max-width:350px){
+    .cart{
+        width: 100%;
+        min-width: 300px;
+    }
+}

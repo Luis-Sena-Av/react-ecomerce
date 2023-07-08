@@ -21,7 +21,7 @@ export const CardProduct = ({product}) => {
     e.stopPropagation()
     despachador(addCartThunk(data))
   } 
-
+ 
   return (
     
     <div className='product' onClick={handleproduct}>

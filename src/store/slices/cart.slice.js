@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { getConfigAuth } from "../../utils/getConfigAuth";
-
+import { setIncartG } from "./InCart.slice";
 const cartSlice= createSlice({
     name:'cart',
     initialState:[],
@@ -25,7 +25,6 @@ export const getCartThunk=()=>(despachador)=>{
         .catch(err=>console.log(err))
 }
 
-
 //Agregar al cart
 export const addCartThunk=(data)=>(despachador)=>{ 
 
@@ -34,8 +33,18 @@ export const addCartThunk=(data)=>(despachador)=>{
         .then(res=>{
             console.log(res.data) 
             despachador(getCartThunk())
+            despachador(setIncartG([false,true]))
+            setTimeout(() => {
+                despachador(setIncartG([false,false]))  
+            }, 2000);
+        
         })
-        .catch(err=>console.log(err))
+        .catch(err=>{console.log(err)
+            despachador(setIncartG([true,false]))
+            setTimeout(() => {
+                despachador(setIncartG([false,false])) 
+            }, 2000);
+        })
 }
 
 //actualizar producto
