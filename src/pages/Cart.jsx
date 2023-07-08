@@ -41,9 +41,9 @@ useEffect(()=>{
           )
           )}
       </div>          
-         
+
       <div className='comprar'>
-        <span className='total-cart'> <span>Total:</span> <b>$ {total}</b></span>
+        <span className='total-cart'> <span>Total:</span> <b>$ {total.toFixed(2)}</b></span>
         <button onClick={handlepurchases}>Checkout</button>
       </div>
 

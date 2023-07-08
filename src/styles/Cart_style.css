@@ -1,9 +1,10 @@
 .cart{
-    background-color:rgb(241, 239, 239);
-    padding: 1.3rem;
+    background-color:white;
     width: 350px;
     height: calc(100vh - 150px);
-    background-color: blue;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .productos_cart{
@@ -13,39 +14,17 @@
     overflow-y: scroll;
 }
 
-.name_procduincart{
-    font-size: 1rem;
-    text-align: left;
-    background-color: blue;
-    line-height: normal;
-}
-  
-
-.img_product{
-    width:100px;
-    padding: 0;
-}
-.img_product img{
-   width:100px;
-}
-.pro_cart{
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;   
+/* scroll general */
+.productos_cart::-webkit-scrollbar {
+    width: 10px;
 }
 
-.bx-trash{
-    cursor: pointer;
+.productos_cart::-webkit-scrollbar-thumb {
+    background: red; 
+    border-radius: 10px;
 }
-
-.totals{
-    display: flex;
-    flex-direction: column;
-}
-.cart{
-    display: flex;
-    flex-direction: column;
-    position: relative;
+.productos_cart::-webkit-scrollbar-thumb:hover {
+    background: #b30000; 
 }
 
 .comprar{
@@ -54,11 +33,10 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    position: absolute;
-    bottom: 0;
-    left: 0;
     padding: 1rem;
     gap: 0.5rem;
+    background-color: white;
+    border: 2px solid gray;
 }
 
 .comprar button{
@@ -71,16 +49,76 @@
     font-size: 1rem;
 }
 
-.nombre_product{
-    display: flex;
-}
-
 .total-cart{
     display: flex;
     width: 100%;
     justify-content: space-between;
 }
 
-.conta{
+.pro_cart{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; 
+    width: 100%;  
+    padding: 0.5rem;
+    gap: 0.5rem;
+}
+
+.img_productCart{
+    width:100px;
+    height: 100px;
+}
+.img_productCart img{
+   width:100px;
+   height: 100px;
+   object-fit: contain;
+}
+
+.info_product{
+    padding: 0;
+    text-align: left;
+    width: 100%;
+}
+
+.name_procduincart{
+    font-size: 1rem;
+    text-align: left;
+    line-height: normal;
+}
+.bx-trash{
     cursor: pointer;
+    color: red;
+}
+
+.totals{
+    display: flex;
+    flex-direction: column;
+}
+.cart{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.nombre_product{
+    display: flex;
+}
+
+.contador1{
+    border: 1px solid gray;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;    
+}
+.conta1{
+    border: 1px solid gray;
+    width: 100%;
+    height: 100%;
+    font-size: 1.3rem;
+    cursor: pointer;
+    padding: 0.2rem;
+}
+
+.bx-trash{
+    font-size: 1.3rem;
 }
