@@ -4,7 +4,7 @@ import { deleteCartThunk, updateCartThunk } from '../store/slices/cart.slice'
 import '../styles/Cart_style.css'
 export const Cart_products = ({produc}) => {
 
-    const [quantity, setquantity] = useState(1)
+    const [quantity, setquantity] = useState(produc.quantity)
     const despachador=useDispatch()
     
     const handleConta=e=>{
@@ -25,6 +25,7 @@ export const Cart_products = ({produc}) => {
     const handleDelete=()=>{
         despachador(deleteCartThunk(produc))
     }
+
     
     return (
     

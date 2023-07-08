@@ -5,6 +5,7 @@ import '../styles/product.css'
 import { CardProduct } from '../components/CardProduct'
 import { useDispatch, useSelector } from 'react-redux'
 import { addCartThunk, getCartThunk, updateCartThunk } from '../store/slices/cart.slice'
+import { Cart } from './Cart'
 
 export const ProductId = () => {
     const {id}=useParams()
@@ -14,10 +15,13 @@ export const ProductId = () => {
     const despachador=useDispatch()
     const [quantity, setquantity] = useState(1)
     const cart=useSelector(state=>state.cart)
+    const [ProducCart,setProducCart] = useState()
+    const mostrarCartG=useSelector(state=>state.mostrarCartG)
+    
     useEffect(()=>{
         getproduct(url)
+        despachador(getCartThunk())
     },[id])
-
     useEffect(()=>{
         if(product){
             const urlCategory=`https://e-commerce-api-v2.academlo.tech/api/v1/products?categoryId=${product?.category.id}`
@@ -25,36 +29,59 @@ export const ProductId = () => {
         }   
     },[product])
 
-
-   const handleConta=e=>{
-    if(e.target.classList.contains("bx-plus")){
-        setquantity(quantity+1)
-    }
-    if(e.target.classList.contains("bx-minus")){
-        if(quantity>=2){
-            setquantity(quantity-1)
+    const handleConta=e=>{
+        if(e.target.classList.contains("bx-plus")){
+            setquantity(quantity+1)
+        }        
+        if(e.target.classList.contains("bx-minus")){
+            if(quantity>=2){
+                setquantity(quantity-1) 
+            }        
         }        
     }
-   }
 
     const data={
         quantity: quantity,
         productId:product?.id
     }
 
-    const updata={
-        quantity: quantity
-    }
-
+    useEffect(()=>{
+        if(product){
+            const produc={...cart?.filter(prod=>prod.product.id===product.id)}
+            setProducCart(produc[0])
+        }
+    },[id,cart])
+    
+    useEffect(()=>{
+        if(product&&ProducCart){
+            if(cart?.filter(prod=>prod.product.id===product.id).length>0){
+                setquantity(ProducCart.quantity)
+            }else{
+                setquantity(1)
+            }
+        }        
+    },[product])
     
 
-    const handleAddcart=()=>{      
-        despachador(addCartThunk(data)) 
-        despachador(getCartThunk())
+    const handleAddcart=()=>{
+        if(cart?.filter(prod=>prod.product.id===product.id).length>0){
+            console.log("está en cart")
+            despachador(updateCartThunk(ProducCart,quantity))
+        }else{
+            console.log("No está en cart")
+            despachador(addCartThunk(data)) 
+            despachador(getCartThunk())
+        }
+        
     }
 
+    console.log(quantity)
+
   return (
-    <div>
+    <div className='product_id'>
+        <div className={`container_cart ${mostrarCartG&&'mostrar_Cart'}`}>
+            <Cart/>
+        </div>
         
        <div className='product_info'>
         <span className='marca'>{product?.brand}</span>
