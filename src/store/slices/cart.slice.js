@@ -36,14 +36,14 @@ export const addCartThunk=(data)=>(despachador)=>{
             despachador(setIncartG([false,true]))
             setTimeout(() => {
                 despachador(setIncartG([false,false]))  
-            }, 2000);
+            }, 1500);
         
         })
         .catch(err=>{console.log(err)
             despachador(setIncartG([true,false]))
             setTimeout(() => {
                 despachador(setIncartG([false,false])) 
-            }, 2000);
+            }, 1500);
         })
 }
 
@@ -57,10 +57,6 @@ export const updateCartThunk=(product,quantity)=>(despachador)=>{
     axios.put(url,data,getConfigAuth())
         .then(res=>{
             despachador(getCartThunk())
-            despachador(setIncartG([true,false]))
-            setTimeout(() => {
-                despachador(setIncartG([false,false])) 
-            }, 2000);
             console.log(res.data)
         })
         .catch(err=>console.log(err))

@@ -66,16 +66,14 @@ export const ProductId = () => {
     },[product])
     
     const handleAddcart=()=>{
-        if(cart?.filter(prod=>prod.product.id===product.id).length>0 && quantity!==ProducCart.quantity){
-            console.log("está en cart")
+        if(cart?.filter(prod=>prod.product.id===product.id).length>0){
             despachador(updateCartThunk(ProducCart,quantity))
+            despachador(addCartThunk(data))
         }else{
-            console.log("No está en cart")
             despachador(addCartThunk(data)) 
-            despachador(getCartThunk())
         }        
     }
-
+console.log(IncartG)
 
   return (
     <div className='product_id'>
