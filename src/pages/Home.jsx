@@ -7,7 +7,7 @@ import { useForm } from 'react-hook-form'
 import "../styles/home.css"
 import { Cart } from './Cart'
 import {getCartThunk } from '../store/slices/cart.slice'
-import { IsProdructCart } from '../components/isProdructCart'
+import { IsProdructCart } from '../components/IsProdructCart'
 import { ProductInCart } from '../components/ProductInCart'
 export const Home = () => {
 
