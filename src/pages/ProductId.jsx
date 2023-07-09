@@ -6,6 +6,8 @@ import { CardProduct } from '../components/CardProduct'
 import { useDispatch, useSelector } from 'react-redux'
 import { addCartThunk, getCartThunk, updateCartThunk } from '../store/slices/cart.slice'
 import { Cart } from './Cart'
+import { ProductInCart } from '../components/ProductInCart'
+import { UpdateQuantity } from '../components/UpdateQuantity'
 
 export const ProductId = () => {
     const {id}=useParams()
@@ -17,6 +19,7 @@ export const ProductId = () => {
     const cart=useSelector(state=>state.cart)
     const [ProducCart,setProducCart] = useState()
     const mostrarCartG=useSelector(state=>state.mostrarCartG)
+    const IncartG=useSelector(state=>state.IncartG)
     
     useEffect(()=>{
         getproduct(url)
@@ -62,27 +65,24 @@ export const ProductId = () => {
         }        
     },[product])
     
-
     const handleAddcart=()=>{
-        if(cart?.filter(prod=>prod.product.id===product.id).length>0){
+        if(cart?.filter(prod=>prod.product.id===product.id).length>0 && quantity!==ProducCart.quantity){
             console.log("está en cart")
             despachador(updateCartThunk(ProducCart,quantity))
         }else{
             console.log("No está en cart")
             despachador(addCartThunk(data)) 
             despachador(getCartThunk())
-        }
-        
+        }        
     }
 
-    console.log(quantity)
 
   return (
     <div className='product_id'>
         <div className={`container_cart ${mostrarCartG&&'mostrar_Cart'}`}>
             <Cart/>
         </div>
-        
+        {IncartG[1]?<ProductInCart/>:IncartG[0]?<UpdateQuantity/>: <div></div> }
        <div className='product_info'>
         <span className='marca'>{product?.brand}</span>
         <h2>{product?.title}</h2>

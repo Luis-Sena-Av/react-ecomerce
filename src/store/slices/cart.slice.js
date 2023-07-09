@@ -57,6 +57,10 @@ export const updateCartThunk=(product,quantity)=>(despachador)=>{
     axios.put(url,data,getConfigAuth())
         .then(res=>{
             despachador(getCartThunk())
+            despachador(setIncartG([true,false]))
+            setTimeout(() => {
+                despachador(setIncartG([false,false])) 
+            }, 2000);
             console.log(res.data)
         })
         .catch(err=>console.log(err))
