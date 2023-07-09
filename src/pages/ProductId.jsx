@@ -24,7 +24,8 @@ export const ProductId = () => {
     useEffect(()=>{
         getproduct(url)
         despachador(getCartThunk())
-    },[id])
+    },[id,IncartG])
+
     useEffect(()=>{
         if(product){
             const urlCategory=`https://e-commerce-api-v2.academlo.tech/api/v1/products?categoryId=${product?.category.id}`
@@ -53,7 +54,7 @@ export const ProductId = () => {
             const produc={...cart?.filter(prod=>prod.product.id===product.id)}
             setProducCart(produc[0])
         }
-    },[id,cart])
+    },[id,cart,product])
     
     useEffect(()=>{
         if(product&&ProducCart){
@@ -73,11 +74,16 @@ export const ProductId = () => {
             despachador(addCartThunk(data)) 
         }        
     }
-console.log(IncartG)
 
+    const fisgon=(e)=>{        
+        if(e.target.classList.contains('bx-minus')||e.target.classList.contains('bx-plus')){
+            setfisgonCart(!fisgonCart)
+        }
+    }
+    
   return (
     <div className='product_id'>
-        <div className={`container_cart ${mostrarCartG&&'mostrar_Cart'}`}>
+        <div onClick={fisgon} className={`container_cart ${mostrarCartG&&'mostrar_Cart'}`}>
             <Cart/>
         </div>
         {IncartG[1]?<ProductInCart/>:IncartG[0]?<UpdateQuantity/>: <div></div> }
