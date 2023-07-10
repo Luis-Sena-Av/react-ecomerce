@@ -47,16 +47,21 @@ export const ProductId = () => {
         }        
     }
 
+    const data={
+        quantity: quantity,
+        productId:product?.id
+    }
+
     useEffect(()=>{
         if(product){
-            const produc={...cart?.filter(prod=>prod.id===product.id)}
+            const produc={...cart?.filter(prod=>prod.product.id===product.id)}
             setProducCart(produc[0])
         }
     },[id,cart,product])
     
     useEffect(()=>{
         if(product&&ProducCart){
-            if(cart?.filter(prod=>prod.id===product.id).length>0){
+            if(cart?.filter(prod=>prod.product.id===product.id).length>0){
                 setquantity(ProducCart.quantity)
             }else{
                 setquantity(1)
@@ -64,13 +69,12 @@ export const ProductId = () => {
         }        
     },[product])
     
-    
     const handleAddcart=()=>{
-        if(cart?.filter(prod=>prod.id===product.id).length>0){
+        if(cart?.filter(prod=>prod.product.id===product.id).length>0){
             despachador(updateCartThunk(ProducCart,quantity))
             despachador(setIncartG([true,false,false]))
         }else{
-            despachador(addCartThunk(product,quantity)) 
+            despachador(addCartThunk(data,product)) 
         }        
     }
     

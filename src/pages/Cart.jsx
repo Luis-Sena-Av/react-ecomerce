@@ -11,26 +11,24 @@ export const Cart = () => {
   const despachador=useDispatch()
   const {Cartpurchases}=usePurchase()
   const [total, settotal] = useState(0)
-  const IncartG=useSelector(state=>state.IncartG)
-
-  useEffect(()=>{
-    despachador(getCartThunk())
-  },[IncartG])
+  
   
   const handlepurchases=()=>{
     Cartpurchases()
     despachador(getCartThunk())
   }
 
-useEffect(()=>{
-  if(cart.length>0){
-    let total_products=cart?.reduce((acc,cv)=>{
-      let subt=cv.price*cv.quantity
-      return acc + subt
-    },0)
-    settotal(total_products)
-  }
-},[cart])
+  useEffect(()=>{
+    if(cart.length>0){
+      let total_products=cart?.reduce((acc,cv)=>{
+        let subt=cv.product.price*cv.quantity
+        return acc + subt
+      },0)
+      settotal(total_products)
+    }else{
+      settotal(0)
+    }
+  },[cart])
 
   return (
       

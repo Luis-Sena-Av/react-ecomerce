@@ -2,7 +2,6 @@ import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { getConfigAuth } from "../../utils/getConfigAuth";
 import { setIncartG } from "./InCart.slice";
-import { useFecth } from "../../hooks/useFecth";
 const cartSlice= createSlice({
     name:'cart',
     initialState:[],
@@ -11,40 +10,44 @@ const cartSlice= createSlice({
         addProductCartG:(state,action)=>[...state,action.payload],
         deleteProductCartG:(state,action)=>{
          return   state.filter(product=>product.id!==action.payload.id)
+        },
+        updateProductCartG:(state,action)=>{
+            state.map(prod=>{
+                if(prod.id===action.payload.id){
+                    return action.payload
+                }else{
+                    return prod
+                }
+            })            
         }        
     }
 })
 
-export const {setCartG,addProductCartG,deleteProductCartG}=cartSlice.actions
+export const {setCartG,addProductCartG,deleteProductCartG,updateProductCartG}=cartSlice.actions
 
 export default cartSlice.reducer
 
+//obtener
 export const getCartThunk=()=>(despachador)=>{
     const url="https://e-commerce-api-v2.academlo.tech/api/v1/cart"
     axios.get(url,getConfigAuth())
-        .then(res=>{despachador(setCartG(res.data.map(prod=>({...prod.product,quantity:prod.quantity}))))
-        })
+        .then(res=>{despachador(setCartG(res.data))})
         .catch(err=>console.log(err))
 }
 
 //Agregar al cart
-export const addCartThunk=(product,quantity=1)=>(despachador)=>{ 
+export const addCartThunk=(data,product)=>(despachador)=>{ 
 
-    const data={
-        quantity: quantity,
-        productId:product.id
-    }
-    const url="https://e-commerce-api-v2.academlo.tech/api/v1/cart"   
-
+    const url="https://e-commerce-api-v2.academlo.tech/api/v1/cart"    
     axios.post(url,data,getConfigAuth())
         .then(res=>{
-            console.log(res.data) 
-            despachador(getCartThunk())
-            // despachador(addProductCartG(product))
+            console.log({...res.data,product:product})
+            despachador(addProductCartG({...res.data,product:product}))
             despachador(setIncartG([false,true,false]))
             setTimeout(() => {
                 despachador(setIncartG([false,false,false]))  
-            }, 2000);        
+            }, 2000);
+        
         })
         .catch(err=>{console.log(err)
             despachador(setIncartG([true,false,false]))
@@ -55,18 +58,18 @@ export const addCartThunk=(product,quantity=1)=>(despachador)=>{
 }
 
 //actualizar producto
-export const updateCartThunk=(product,quantity)=>(despachador)=>{
+export const updateCartThunk=(produc,quantity)=>(despachador)=>{
 
-    const url=`https://e-commerce-api-v2.academlo.tech/api/v1/cart/${product.id}`
+    const url=`https://e-commerce-api-v2.academlo.tech/api/v1/cart/${produc.id}`
     const data={
         quantity:quantity
     }
     axios.put(url,data,getConfigAuth())
         .then(res=>{
-            console.log(res.data)
-            despachador(getCartThunk())
+            updateProductCartG({...res.data,product:produc.product})
+            despachador(setIncartG([false,false,true]))
             setTimeout(() => {
-                despachador(setIncartG([false,false,false])) 
+                despachador(setIncartG([false,false,false]))            
             }, 2000);
         })
         .catch(err=>console.log(err))
@@ -79,7 +82,6 @@ export const deleteCartThunk=(product)=>(despachador)=>{
     
     axios.delete(url,getConfigAuth())
         .then(res=>{
-            console.log(res.data)
             despachador(deleteProductCartG(product)) 
         })
         .catch(err=>console.log(err))
