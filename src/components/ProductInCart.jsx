@@ -1,4 +1,5 @@
 import React from 'react'
+import "../styles/windonsP.css"
 
 export const ProductInCart = () => {
   return (

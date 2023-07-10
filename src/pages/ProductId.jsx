@@ -27,7 +27,7 @@ export const ProductId = () => {
     useEffect(()=>{
         getproduct(url)
         despachador(getCartThunk())
-    },[id,IncartG])
+    },[id])
 
     useEffect(()=>{
         if(product){
@@ -63,11 +63,9 @@ export const ProductId = () => {
         if(product&&ProducCart){
             if(cart?.filter(prod=>prod.product.id===product.id).length>0){
                 setquantity(ProducCart.quantity)
-            }else{
-                setquantity(1)
             }
         }        
-    },[product])
+    },[IncartG])
     
     const handleAddcart=()=>{
         if(cart?.filter(prod=>prod.product.id===product.id).length>0){
@@ -90,67 +88,67 @@ export const ProductId = () => {
         }
     }
     
-  return (
-    <div className='product_id'>
+    return (
+        <div className='product_id'>
 
-        <div className='principal_producIs'>
-            <div className='conten_imgs_product'>
-                <div className='slider'>
-                    <button className='btn_slider btn_left' onClick={slider_left}> &lt; </button> 
-                    
-                        <Slider product={product} indexSlider={indexSlider} />
-                    
-                    <button className='btn_slider btn_right' onClick={slider_right}>&gt;</button> 
+            <div className='principal_producIs'>
+                <div className='conten_imgs_product'>
+                    <div className='slider'>
+                        <button className='btn_slider btn_left' onClick={slider_left}> &lt; </button> 
+                        
+                            <Slider product={product} indexSlider={indexSlider} />
+                        
+                        <button className='btn_slider btn_right' onClick={slider_right}>&gt;</button> 
+                    </div>
+
+                    <div className='preview_img'>
+                        {product?.images.map((img_produc,i)=>
+                        <div key={img_produc.id} className={`conten_img_preview ${i===indexSlider&&'border_img'}`} onClick={()=>setindexSlider(i)}>
+                            <img className='img_product_slider' src={img_produc.url} alt="imagen_producto"  />
+                        </div>        
+                        )}
+                    </div>
+
+                </div>        
+
+                <div className='product_info'>
+                        <span className='marca'>{product?.brand}</span>
+                        <h2>{product?.title}</h2>
+                        <p>{product?.description}</p>
+
+                        <div className='cantidades'>
+                            <span className='canti1'><span>Price</span><b>${product?.price}</b></span>
+                            <span className='canti1'> 
+                                <span>Quantity</span>
+                            <div className='contador' onClick={handleConta}>
+                                <span className='conta' ><i className='bx bx-minus'></i></span>
+                                <span className='conta2'>{quantity}</span>
+                                <span className='conta'><i className='bx bx-plus'></i></span>
+                            </div>                
+                            </span>
+                        </div>
+                
+                        <div className='agrega_product' onClick={handleAddcart}>
+                            <span onClick={handleAddcart}>Add to cart</span> <i onClick={handleAddcart}  className='bx bx-cart carro'></i>
+                        </div>
+
                 </div>
+            </div>
 
-                <div className='preview_img'>
-                    {product?.images.map((img_produc,i)=>
-                    <div key={img_produc.id} className={`conten_img_preview ${i===indexSlider&&'border_img'}`} onClick={()=>setindexSlider(i)}>
-                        <img className='img_product_slider' src={img_produc.url} alt="imagen_producto"  />
-                    </div>        
+            <div className='secundar_producId'> 
+                <h1 className='similar'>Productos Similares</h1>
+                <div className='Products'>
+                    {Similarproduct?.filter(prod=>prod.id!==product.id).map(product=>
+                    <CardProduct product={product} key={product.id}/> 
                     )}
                 </div>
-
-            </div>        
-
-            <div className='product_info'>
-                    <span className='marca'>{product?.brand}</span>
-                    <h2>{product?.title}</h2>
-                    <p>{product?.description}</p>
-
-                    <div className='cantidades'>
-                        <span className='canti1'><span>Price</span><b>${product?.price}</b></span>
-                        <span className='canti1'> 
-                            <span>Quantity</span>
-                        <div className='contador' onClick={handleConta}>
-                            <span className='conta'><i className='bx bx-minus'></i></span>
-                            <span className='conta2'>{quantity}</span>
-                            <span className='conta'><i className='bx bx-plus'></i></span>
-                        </div>                
-                        </span>
-                    </div>
-            
-                    <div className='agrega_product' onClick={handleAddcart}>
-                        <span onClick={handleAddcart}>Add to cart</span> <i onClick={handleAddcart}  className='bx bx-cart carro'></i>
-                    </div>
-
             </div>
-        </div>
 
-        <div className='secundar_producId'> 
-            <h1 className='similar'>Productos Similares</h1>
-            <div className='Products'>
-                {Similarproduct?.filter(prod=>prod.id!==product.id).map(product=>
-                <CardProduct product={product} key={product.id}/> 
-                )}
+            <div  className={`container_cart ${mostrarCartG&&'mostrar_Cart'}`}>
+                <Cart/>
             </div>
-        </div>
+            {IncartG[1]?<ProductInCart/>:IncartG[0]?<UpdateQuantity/>: <div></div> }
 
-        <div  className={`container_cart ${mostrarCartG&&'mostrar_Cart'}`}>
-            <Cart/>
         </div>
-        {IncartG[1]?<ProductInCart/>:IncartG[0]?<UpdateQuantity/>: <div></div> }
-
-    </div>
-  )
+    )
 }
