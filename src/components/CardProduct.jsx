@@ -19,7 +19,12 @@ export const CardProduct = ({product}) => {
  
   const handlecart=e=>{
     e.stopPropagation()
-    despachador(addCartThunk(data,product))
+    if(localStorage.getItem('token')){
+      despachador(addCartThunk(data,product))
+    }else{
+      navigate('/login')
+    }
+    
   } 
  
   return (

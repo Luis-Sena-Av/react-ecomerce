@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { Navigate, useNavigate, useParams } from 'react-router-dom'
 import { useFecth } from '../hooks/useFecth'
 import '../styles/product.css'
 import { CardProduct } from '../components/CardProduct'
@@ -23,7 +23,7 @@ export const ProductId = () => {
     const [indexSlider,setindexSlider] = useState(0)
     const mostrarCartG=useSelector(state=>state.mostrarCartG)
     const IncartG=useSelector(state=>state.IncartG)
-    
+    const navigate=useNavigate()
     useEffect(()=>{
         getproduct(url)
         despachador(getCartThunk())
@@ -68,12 +68,17 @@ export const ProductId = () => {
     },[IncartG])
     
     const handleAddcart=()=>{
-        if(cart?.filter(prod=>prod.product.id===product.id).length>0){
-            despachador(updateCartThunk(ProducCart,quantity))
-            despachador(setIncartG([true,false,false]))
+        if(localStorage.getItem('token')){
+            if(cart?.filter(prod=>prod.product.id===product.id).length>0){
+                despachador(updateCartThunk(ProducCart,quantity))
+                despachador(setIncartG([true,false,false]))
+            }else{
+                despachador(addCartThunk(data,product)) 
+            }   
         }else{
-            despachador(addCartThunk(data,product)) 
-        }        
+            navigate('/login')
+        }
+             
     }
     
     const slider_left=()=>{

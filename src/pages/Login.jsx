@@ -3,6 +3,8 @@ import { useForm } from 'react-hook-form'
 import { useFecth } from '../hooks/useFecth'
 import '../styles/register_style.css'
 import { useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { setmostrarCartG } from '../store/slices/mostrarCart.slice'
 
 
 export const Login = () => {
@@ -12,7 +14,7 @@ export const Login = () => {
     const user=JSON.parse(localStorage.getItem("user"))
     const url="https://e-commerce-api-v2.academlo.tech/api/v1/users/login"
     const navigate=useNavigate()
-  
+    const despachador=useDispatch()
     const submit=(data)=>{
       loginUser(url,data)
       reset({
@@ -31,6 +33,7 @@ export const Login = () => {
     const salir=()=>{
       localStorage.clear()
       navigate("/login")
+      despachador(setmostrarCartG(false))
     }
   
     return (
