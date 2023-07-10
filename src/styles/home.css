@@ -116,7 +116,7 @@ height: min-content;
 .container_cart{
     position: fixed;
     top: 150px;
-    right: -100%;
+    right: -200%;
     transition: right 0.8s ease;
     z-index: 100;
 }
@@ -140,5 +140,14 @@ height: min-content;
 @media screen and (max-width:566px){    
     .filtros{
         flex-direction: column;
+    }
+}
+
+@media screen and (max-width:380px) {
+  
+    .Products{
+        grid-template-columns: repeat(auto-fill,minmax(255px,1fr));
+        width: 255px;
+        margin: 0 auto;
     }
 }

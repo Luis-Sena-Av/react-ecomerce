@@ -176,3 +176,13 @@
         flex-direction: column;
     }
 }
+
+@media screen and (max-width:380px) {
+    .principal_producIs{
+        padding: 0.5rem;
+    }
+
+    .secundar_producId{
+        padding: 0.5rem;
+    }
+}

@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { getConfigAuth } from "../../utils/getConfigAuth";
 import { setIncartG } from "./InCart.slice";
+
 const cartSlice= createSlice({
     name:'cart',
     initialState:[],

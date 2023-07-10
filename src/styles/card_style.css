@@ -62,3 +62,8 @@
     cursor: pointer;
 }
 
+@media screen and (max-width:380px) {
+    .product{
+        width: 250px;
+    }
+}
