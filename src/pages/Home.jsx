@@ -71,6 +71,7 @@ export const Home = () => {
  } 
 
 
+
  return ( 
 
   <div className='contain_home'> 

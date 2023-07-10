@@ -59,6 +59,14 @@
     height: 100%;
     padding: 0.3rem;
     font-size: 1rem;
+    cursor: pointer;
+}
+.conta2{
+    border: 1px solid gray;
+    width: 100%;
+    height: 100%;
+    padding: 0.3rem;
+    font-size: 1rem;
 }
 
 .carro{
@@ -67,4 +75,104 @@
 
 .similar{
     text-align: center;
+}
+
+.slider{
+    width: 100%;
+    max-width: 500px;
+    height: 400px;
+    position: relative; 
+    overflow: hidden;   
+}
+.Slider_conten_img{
+    width: 300%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.5s ease;
+}
+
+.conten_img{
+    width: 100%;
+    height: 100%;
+    padding: 1rem 2.5rem;
+}
+
+.img_product_slider{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.btn_slider{
+    width: 2.3rem;
+    font-size: 2.3rem;
+    position: absolute;
+    top: 45%;
+    background-color: red;
+    color: white;
+    border-radius: 0.5rem; 
+    z-index: 10;
+    cursor: pointer;
+}
+.btn_slider:hover{
+    filter: brightness(80%);
+}
+
+.btn_left{
+    left: 0;
+}
+.btn_right{
+    right: 0;
+}
+
+.preview_img{
+    width: 300px;
+    height: 70px;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.conten_img_preview{
+    width: 100%;
+    height: 100%;
+    padding: 0.3rem;
+    cursor: pointer;
+}
+
+.conten_img_preview:hover{
+   scale: 1.1;
+}
+
+.conten_imgs_product{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.border_img{
+    border: 2px solid red;
+    border-radius: 0.2rem;
+}
+
+.principal_producIs{
+    display: flex;
+    padding: 1.5rem;
+    gap: 1rem;
+}
+
+.secundar_producId{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 2rem;
+}
+
+@media screen and (max-width:750px) {
+    .principal_producIs{
+        flex-direction: column;
+    }
 }

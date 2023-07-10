@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { getConfigAuth } from "../../utils/getConfigAuth";
 import { setIncartG } from "./InCart.slice";
+import { useFecth } from "../../hooks/useFecth";
 const cartSlice= createSlice({
     name:'cart',
     initialState:[],
@@ -21,29 +22,35 @@ export default cartSlice.reducer
 export const getCartThunk=()=>(despachador)=>{
     const url="https://e-commerce-api-v2.academlo.tech/api/v1/cart"
     axios.get(url,getConfigAuth())
-        .then(res=>despachador(setCartG(res.data)))
+        .then(res=>{despachador(setCartG(res.data.map(prod=>({...prod.product,quantity:prod.quantity}))))
+        })
         .catch(err=>console.log(err))
 }
 
 //Agregar al cart
-export const addCartThunk=(data)=>(despachador)=>{ 
+export const addCartThunk=(product,quantity=1)=>(despachador)=>{ 
 
-    const url="https://e-commerce-api-v2.academlo.tech/api/v1/cart"    
+    const data={
+        quantity: quantity,
+        productId:product.id
+    }
+    const url="https://e-commerce-api-v2.academlo.tech/api/v1/cart"   
+
     axios.post(url,data,getConfigAuth())
         .then(res=>{
             console.log(res.data) 
             despachador(getCartThunk())
-            despachador(setIncartG([false,true]))
+            // despachador(addProductCartG(product))
+            despachador(setIncartG([false,true,false]))
             setTimeout(() => {
-                despachador(setIncartG([false,false]))  
-            }, 1500);
-        
+                despachador(setIncartG([false,false,false]))  
+            }, 2000);        
         })
         .catch(err=>{console.log(err)
-            despachador(setIncartG([true,false]))
+            despachador(setIncartG([true,false,false]))
             setTimeout(() => {
-                despachador(setIncartG([false,false])) 
-            }, 1500);
+                despachador(setIncartG([false,false,false])) 
+            }, 2000);
         })
 }
 
@@ -56,11 +63,11 @@ export const updateCartThunk=(product,quantity)=>(despachador)=>{
     }
     axios.put(url,data,getConfigAuth())
         .then(res=>{
+            console.log(res.data)
             despachador(getCartThunk())
-            despachador(setIncartG([true,false]))
             setTimeout(() => {
-                despachador(setIncartG([false,false])) 
-            }, 1500);
+                despachador(setIncartG([false,false,false])) 
+            }, 2000);
         })
         .catch(err=>console.log(err))
 }

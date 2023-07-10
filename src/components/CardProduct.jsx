@@ -11,15 +11,10 @@ export const CardProduct = ({product}) => {
   const handleproduct=()=>{
     navigate(`/product/${product.id}`)
   }  
-  
-  const data={
-    quantity: 1,
-    productId:product.id
-  }
- 
+   
   const handlecart=e=>{
     e.stopPropagation()
-    despachador(addCartThunk(data))
+    despachador(addCartThunk(product))
   } 
  
   return (
