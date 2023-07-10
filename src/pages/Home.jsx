@@ -13,6 +13,7 @@ export const Home = () => {
 
   const Products=useSelector(state=>state.ProductsG)
   const [nameProduct, setNameproduct] = useState("")
+  const [indexCategory, setindexCategory] = useState(5)
   const despachador=useDispatch()
   const [categories,getcategories]=useFecth()
   const [showcategory, setshowcategory] = useState(false)
@@ -47,6 +48,7 @@ export const Home = () => {
       despachador(getAllProductsThunk(url))
     }
   }
+ 
 
   const submit=data=>{
     const filter_Price={
@@ -104,10 +106,9 @@ export const Home = () => {
         <div className='fiter_category'>
           <h2 className='category' onClick={show_lis} >Category <i className={`bx bx-chevron-down ${showcategory&&'rota'} `}></i></h2>
           <ul style={{cursor:"pointer"}} className={`list_category ${showcategory&&'list_category_show'}`} >
-            <li onClick={()=>handleClick()}>All categories</li>
-            {categories?.map(categoty=> 
-          
-            <li key={categoty.id} onClick={()=>handleClick(categoty.id)}>
+            <li onClick={()=>{handleClick();setindexCategory(5)}} className={`pading_cat ${indexCategory==5&&'border_category'}`}>All categories</li>
+            {categories?.map((categoty,ind)=>          
+            <li key={categoty.id} onClick={()=>{setindexCategory(ind); handleClick(categoty.id) }} className={`pading_cat ${indexCategory==ind&&'border_category'}`} >
               {categoty.name}
             </li> 
           )}
